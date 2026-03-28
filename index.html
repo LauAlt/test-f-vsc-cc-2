@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alphagraphs – Shaping Tomorrow's Digital World</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            teal: '#00CCCB',
+            'alphablue': '#00233B',
+            'dark': '#17171A',
+            'darkest': '#010101',
+          },
+          fontFamily: {
+            montserrat: ['Montserrat', 'sans-serif'],
+            opensans: ['Open Sans', 'sans-serif'],
+          },
+          boxShadow: {
+            neon: '0 0 16px 0 #00CCCB',
+            'neon-sm': '0 0 7.568px 0 #00CCCB',
+            'teal-offset': '6px 4px 1px 0px #00CCCB',
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: 'Montserrat', sans-serif; background: #000; color: #fff; overflow-x: clip; }
+
+    /* Ticker animation */
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .ticker-track { animation: ticker 30s linear infinite; display: flex; }
+    .ticker-track:hover { animation-play-state: paused; }
+
+    /* Watermark */
+    .watermark {
+      font-size: clamp(80px, 12vw, 200px);
+      font-weight: 900;
+      opacity: 0.06;
+      pointer-events: none;
+      line-height: 1;
+      white-space: nowrap;
+      text-transform: uppercase;
+      position: absolute;
+    }
+
+    /* Neon glow text */
+    .neon-text {
+      text-shadow: 0 0 20px #00CCCB, 0 0 40px #00CCCB, 0 0 80px #00CCCB;
+    }
+
+    /* Navbar glass */
+    .navbar-glass {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25);
+    }
+
+    /* Card glass */
+    .card-glass {
+      background: #17171A;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+    }
+
+    /* Testimonial card */
+    .testimonial-card {
+      background: #17171A;
+      border-radius: 16px;
+      backdrop-filter: blur(5px);
+    }
+
+    /* Gradient sections */
+    .gradient-collections {
+      background: linear-gradient(to bottom, #000 0%, #0d6665 40%, #000 100%);
+    }
+    .gradient-mints {
+      background: linear-gradient(to bottom, #000 0%, #0d6665 50%, #fff 100%);
+    }
+
+    /* FAQ open state */
+    .faq-item { cursor: pointer; }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .faq-item.open .faq-answer { max-height: 500px; }
+    .faq-item.open .faq-caret { transform: rotate(180deg); }
+    .faq-caret { transition: transform 0.3s ease; display: inline-block; }
+
+    /* Pricing switcher */
+    .switcher-option { cursor: pointer; transition: all 0.2s; }
+    .switcher-option.active { background: #000; border-radius: 8px; }
+
+    /* Shining glow orb */
+    .glow-orb {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,204,203,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Section dividers */
+    .section-divider {
+      border: none;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(0,204,203,0.3), transparent);
+    }
+
+    /* Scroll smooth */
+    html { scroll-behavior: smooth; }
+
+    /* Teal mentions */
+    .mention { color: #00CCCB; }
+
+    /* Partner logo opacity */
+    .partner-logo { opacity: 0.8; filter: brightness(1.2); transition: opacity 0.2s; }
+    .partner-logo:hover { opacity: 1; }
+
+    /* CTA button outline */
+    .btn-outline {
+      border: 1.5px solid #00CCCB;
+      color: #00CCCB;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover { background: rgba(0,204,203,0.1); }
+
+    /* CTA button solid */
+    .btn-solid {
+      background: #00CCCB;
+      color: #000;
+      box-shadow: 0 0 10px rgba(0,204,203,0.6);
+      transition: all 0.2s;
+    }
+    .btn-solid:hover { box-shadow: 0 0 20px rgba(0,204,203,0.9); }
+
+    /* Newsletter input */
+    .newsletter-input {
+      border: 1.634px solid #00CCCB;
+      border-radius: 10px;
+      box-shadow: 0 0 16px 0 rgba(0,204,203,0.4);
+    }
+
+    /* Wave SVG */
+    .wave-line { mix-blend-mode: hard-light; }
+
+    /* ── Noise texture overlay ── */
+    @keyframes noise-shift {
+      0%   { transform: translate(0, 0); }
+      20%  { transform: translate(-2px, 2px); }
+      40%  { transform: translate(-2px, -2px); }
+      60%  { transform: translate(2px, 2px); }
+      80%  { transform: translate(2px, -2px); }
+      100% { transform: translate(0, 0); }
+    }
+    .noise-overlay {
+      position: absolute;
+      inset: -20%;
+      width: 140%;
+      height: 140%;
+      pointer-events: none;
+      z-index: 5;
+      opacity: 0.035;
+      animation: noise-shift 0.15s steps(1) infinite;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+    }
+    /* Noise más visible en sección clara (Portfolio) */
+    #portfolio .noise-overlay { opacity: 0.045; }
+
+    /* ── Sticky card stack ── */
+    .sticky-section {
+      position: sticky;
+      top: 0;
+      border-radius: 28px 28px 0 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     FLOATING NAVBAR
+     ============================================================ -->
+<header class="fixed top-14 left-1/2 -translate-x-1/2 z-50 w-full max-w-5xl px-4">
+  <nav class="navbar-glass rounded-full px-6 py-3 flex items-center gap-6">
+    <!-- Logo -->
+    <div class="flex items-center gap-2 flex-shrink-0">
+      <svg width="28" height="27" viewBox="0 0 44 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Alphagraphs logo">
+        <path d="M26.206 9.56054L24.6008 11.9688L23.2652 13.9777L13.3052 28.9115H39.1067L30.4992 16.023L23.8424 26.3661H18.1588L26.838 13.3525L28.5359 10.8111L32.1129 5.44588L33.5748 3.25946L33.4653 3.19088C30.2886 1.27474 26.6147 0.181529 22.8397 0.0201699C22.511 0.00806796 22.1782 0 21.8538 0C18.8161 0 15.8837 0.580893 13.1367 1.72251C11.9612 2.21466 10.8194 2.80765 9.7493 3.49343C8.55276 4.25988 7.42784 5.14333 6.40403 6.12762C4.73983 7.72104 3.36633 9.5323 2.32146 11.5211C0.779438 14.4457 0 17.6083 0 20.9243C0 23.7561 0.577206 26.4992 1.71476 29.0729L1.81167 29.2907L3.60227 26.6041L3.5812 26.5476C2.97029 24.7323 2.66273 22.8404 2.66273 20.9243C2.66273 16.7047 4.20054 12.578 6.99388 9.31043C8.1525 7.95098 9.50915 6.75692 11.0217 5.76456C12.1045 5.05055 13.2673 4.44545 14.4807 3.96137C16.482 3.15861 18.6054 2.69067 20.7878 2.57771C22.2203 2.50107 23.6739 2.57771 25.0811 2.80765C26.1639 2.98515 27.2424 3.25542 28.2915 3.61041C28.7929 3.77984 29.2858 3.97347 29.7577 4.17517L29.7998 4.19534L26.5599 9.05629L26.2186 9.56457L26.206 9.56054Z" fill="white"/>
+        <path d="M43.7074 20.9244C43.7074 22.5017 43.5262 24.0709 43.1639 25.5917C43.1218 25.7813 43.067 25.9911 43.0038 26.217C42.6415 27.5482 42.1443 28.8431 41.5166 30.0735C40.4548 32.159 39.035 34.0591 37.3034 35.7211C36.6335 36.3625 35.9215 36.9635 35.1842 37.5081C33.4989 38.7546 31.6451 39.751 29.6733 40.4731C27.1875 41.3848 24.5543 41.8487 21.8494 41.8487C20.7835 41.8487 19.7049 41.7761 18.6516 41.6268C13.9919 40.9773 9.75339 38.9361 6.39549 35.717C5.06412 34.4423 3.90971 33.0142 2.96596 31.4773L2.92383 31.4128L4.53748 28.9883L21.8536 3.03369L26.2059 9.56471L24.6006 11.973L21.8536 7.76555L6.10899 31.3845L6.09635 31.4047L6.10899 31.4249C9.70705 36.3584 15.5929 39.3032 21.8536 39.3032C23.0586 39.3032 24.2636 39.1943 25.4306 38.9805C26.4544 38.7949 27.4782 38.5247 28.4641 38.1777C30.3896 37.5 32.1802 36.5319 33.7896 35.3055C34.944 34.4261 35.9973 33.4136 36.9158 32.3043C37.7753 31.2595 38.5168 30.138 39.115 28.9641L39.1277 28.9399L39.1572 28.8794C39.5954 28.0081 39.9661 27.0924 40.2568 26.1484C40.6107 25.0028 40.8509 23.8248 40.9646 22.6388C41.0194 22.0741 41.0489 21.4972 41.0489 20.9204C41.0489 15.3817 38.4662 10.19 33.9623 6.67234L33.8739 6.60377L35.319 4.43752L35.4285 4.52223C36.0731 5.01438 36.7051 5.55493 37.3034 6.12372C41.4323 10.077 43.7032 15.3293 43.7032 20.9204L43.7074 20.9244Z" fill="white"/>
+      </svg>
+    </div>
+    <!-- Divider -->
+    <div class="w-px h-6 bg-white/30 flex-shrink-0"></div>
+    <!-- Nav Links -->
+    <ul class="flex items-center gap-5 text-sm font-medium text-white/90 tracking-wide flex-1">
+      <li><a href="#collections" class="hover:text-[#00CCCB] transition-colors duration-200">Collections</a></li>
+      <li><a href="#profiles" class="hover:text-[#00CCCB] transition-colors duration-200">Profiles</a></li>
+      <li><a href="#mints" class="hover:text-[#00CCCB] transition-colors duration-200">Mints</a></li>
+      <li><a href="#portfolio" class="hover:text-[#00CCCB] transition-colors duration-200">Portfolio</a></li>
+      <li><a href="#pricing" class="hover:text-[#00CCCB] transition-colors duration-200">Pricing</a></li>
+      <li><a href="#faq" class="hover:text-[#00CCCB] transition-colors duration-200">FAQs</a></li>
+    </ul>
+    <!-- CTA Button -->
+    <div class="flex items-center flex-shrink-0">
+      <a href="#" class="btn-solid rounded-full px-5 py-2 text-sm font-bold cursor-pointer flex items-center gap-1.5">
+        Go to App
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+  </nav>
+</header>
+
+
+<!-- ============================================================
+     TICKER BAR
+     ============================================================ -->
+<div class="bg-black border-b border-white/10 h-12 flex items-center overflow-hidden relative" role="marquee" aria-label="Cryptocurrency prices">
+  <div class="ticker-track whitespace-nowrap">
+    <!-- Repeated twice for seamless loop -->
+    <span class="inline-flex items-center gap-8 px-8">
+      <span class="text-xs font-semibold uppercase tracking-widest flex items-center gap-2">
+        <span class="text-white/70">ETH</span>
+        <span class="text-white font-bold">$1,842.50</span>
+        <span class="text-[#BB1E1A]">▼ -2.14%</span>
+      </span>
+      <span class="text-white/30">|</span>
+      <span class="text-xs font-semibold uppercase tracking-widest flex items-center gap-2">
+        <span class="text-white/70">SOL</span>
+        <span class="text-white font-bold">$24.18</span>
+        <span class="text-[#84F4B8]">▲ +4.72%</span>
+      </span>
+      <span class="text-white/30">|</span>
+      <span class="text-xs font-semibold uppercase tracking-widest flex items-center gap-2">
+        <span class="text-white/70">MATIC</span>
+        <span class="text-white font-bold">$0.842</span>
+        <span class="text-[#84F4B8]">▲ +1.38%</span>
+      </span>
+      <span class="text-white/30">|</span>
+      <span class="text-xs font-semibold uppercase tracking-widest flex items-center gap-2">
+        <span class="text-white/70">24h NFT VOL</span>
+        <span class="text-white font-bold">$12.4M</span>
+        <span class="text-[#BB1E1A]">▼ -8.22%</span>
+      </span>
+      <span class="text-white/30">|</span>
+      <span class="text-xs font-semibold uppercase tracking-widest flex items-center gap-2">
+        <span class="text-white/70">BTC</span>
+        <span class="text-white font-bold">$29,840.00</span>
+        <span class="text-[#84F4B8]">▲ +0.95%</span>
+      </span>
+      <span class="text-white/30">|</span>
+      <span class="text-xs font-semibold uppercase tracking-widest flex items-center gap-2">
+        <span class="text-white/70">FLOOR PRICE</span>
+        <span class="text-white font-bold">0.08 ETH</span>
+        <span class="text-[#84F4B8]">▲ +12.5%</span>
+      </span>
+      <span class="text-white/30">|</span>
+    </span>
+    <!-- Duplicate for seamless loop -->
+    <span class="inline-flex items-center gap-8 px-8">
+      <span class="text-xs font-semibold uppercase tracking-widest flex items-center gap-2">
+        <span class="text-white/70">ETH</span>
+        <span class="text-white font-bold">$1,842.50</span>
+        <span class="text-[#BB1E1A]">▼ -2.14%</span>
+      </span>
+      <span class="text-white/30">|</span>
+      <span class="text-xs font-semibold uppercase tracking-widest flex items-center gap-2">
+        <span class="text-white/70">SOL</span>
+        <span class="text-white font-bold">$24.18</span>
+        <span class="text-[#84F4B8]">▲ +4.72%</span>
+      </span>
+      <span class="text-white/30">|</span>
+      <span class="text-xs font-semibold uppercase tracking-widest flex items-center gap-2">
+        <span class="text-white/70">MATIC</span>
+        <span class="text-white font-bold">$0.842</span>
+        <span class="text-[#84F4B8]">▲ +1.38%</span>
+      </span>
+      <span class="text-white/30">|</span>
+      <span class="text-xs font-semibold uppercase tracking-widest flex items-center gap-2">
+        <span class="text-white/70">24h NFT VOL</span>
+        <span class="text-white font-bold">$12.4M</span>
+        <span class="text-[#BB1E1A]">▼ -8.22%</span>
+      </span>
+      <span class="text-white/30">|</span>
+      <span class="text-xs font-semibold uppercase tracking-widest flex items-center gap-2">
+        <span class="text-white/70">BTC</span>
+        <span class="text-white font-bold">$29,840.00</span>
+        <span class="text-[#84F4B8]">▲ +0.95%</span>
+      </span>
+      <span class="text-white/30">|</span>
+      <span class="text-xs font-semibold uppercase tracking-widest flex items-center gap-2">
+        <span class="text-white/70">FLOOR PRICE</span>
+        <span class="text-white font-bold">0.08 ETH</span>
+        <span class="text-[#84F4B8]">▲ +12.5%</span>
+      </span>
+      <span class="text-white/30">|</span>
+    </span>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     HERO SECTION
+     ============================================================ -->
+<section class="relative min-h-screen flex flex-col justify-center overflow-hidden bg-black" style="padding: 160px 150px 96px;">
+  <!-- Hero background image (parallax) -->
+  <div id="hero-bg" class="absolute inset-0 z-0" style="background-image: url('hero_image_background.png'); background-size: 120%; background-position: center 30%; background-repeat: no-repeat; will-change: background-position;"></div>
+  <!-- Dark overlay so text stays readable -->
+  <div class="absolute inset-0 z-0" style="background: linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.80) 100%);"></div>
+  <!-- Subtle teal glow orb -->
+  <div class="glow-orb" style="top: -100px; left: 50%; transform: translateX(-50%); z-index: 1;"></div>
+
+  <div class="flex flex-col gap-24 relative z-10 max-w-7xl mx-auto w-full" style="position: relative; z-index: 2;">
+    <!-- Chain logos -->
+    <div class="flex items-center gap-8">
+      <!-- Bitcoin has internal padding in the PNG, so we crop it with overflow:hidden + scale -->
+      <div style="width:40px;height:40px;border-radius:50%;overflow:hidden;flex-shrink:0;">
+        <img src="Assets/def88fe9b24868d8746093a2e3190619283f1edb.png" alt="Bitcoin" style="width:100%;height:100%;object-fit:cover;transform:scale(1.35);transform-origin:center;" />
+      </div>
+      <div style="width:40px;height:40px;border-radius:50%;overflow:hidden;flex-shrink:0;">
+        <img src="Assets/da1c9d31e3aad998d4174eead1253c4c0bc6bcee.png" alt="Polygon" style="width:100%;height:100%;object-fit:cover;" />
+      </div>
+      <div style="width:40px;height:40px;border-radius:50%;overflow:hidden;flex-shrink:0;">
+        <img src="Assets/ef22e70372120d3c8f6489b3ba5c7cdeb6c1d916.png" alt="Ethereum" style="width:100%;height:100%;object-fit:cover;" />
+      </div>
+      <div style="width:40px;height:40px;border-radius:50%;overflow:hidden;flex-shrink:0;">
+        <img src="Assets/858dbb695102f092ffed6057e5995db110f7becc.png" alt="Solana" style="width:100%;height:100%;object-fit:cover;" />
+      </div>
+    </div>
+
+    <!-- Headline + subtitle + buttons -->
+    <div class="flex flex-col gap-10 w-full">
+      <h1 class="font-montserrat font-extrabold uppercase text-white leading-none" style="font-size: clamp(48px, 6.5vw, 96px); line-height: 0.974; letter-spacing: -2px;">
+        Shaping<br/>Tomorrow's<br/>Digital World
+      </h1>
+      <!-- Párrafo y botones en la misma fila -->
+      <div class="flex items-center gap-12">
+        <p class="font-montserrat font-medium text-white/80 flex-1" style="font-size: clamp(14px, 1.2vw, 20px); max-width: 480px; line-height: 1.6;">
+          The most powerful NFT analytics platform — track collections, discover alpha, and make data-driven decisions across all major blockchains.
+        </p>
+        <div class="flex items-center gap-4 flex-shrink-0">
+          <a href="#" class="btn-solid font-montserrat font-bold px-8 py-4 rounded-xl text-base cursor-pointer inline-flex items-center gap-2">
+            Get Started Free
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a href="#collections" class="btn-outline font-montserrat font-semibold px-8 py-4 rounded-xl text-base cursor-pointer">
+            Explore Features
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+     COLLECTIONS SECTION
+     ============================================================ -->
+<section id="collections" class="relative overflow-hidden gradient-collections" style="position: sticky; top: 0; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 128px 0;">
+  <!-- Watermark -->
+  <div class="noise-overlay"></div>
+  <div id="wm-collections" class="watermark text-white" style="top: 0; left: -10px;">COLLECTIONS</div>
+
+  <div class="max-w-7xl mx-auto px-12 relative z-10">
+    <div class="flex items-center gap-20">
+      <!-- Text -->
+      <div class="flex-shrink-0" style="width: 438px;">
+        <h2 class="font-montserrat font-bold text-white uppercase mb-6" style="font-size: clamp(28px, 2.5vw, 40px); line-height: 1.2;">
+          Explore NFT Collections Like Never Before
+        </h2>
+        <p class="font-montserrat font-medium text-white/80" style="font-size: clamp(16px, 1.1vw, 20px); line-height: 1.6;">
+          Dive deep into any NFT collection with real-time floor prices, sales volume, unique holders, and rarity scores. Our advanced analytics reveal trends before they happen.
+        </p>
+        <a href="#" class="mt-8 inline-flex btn-outline font-montserrat font-semibold px-6 py-3 rounded-xl cursor-pointer text-sm items-center gap-2">
+          View Collections
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- App screenshot -->
+      <div class="flex-1 flex justify-end">
+        <div id="collections-img-wrap" class="rounded-2xl overflow-hidden" style="max-width: 807px; width: 100%; cursor: pointer; transition: transform 0.6s cubic-bezier(0.23,1,0.32,1), box-shadow 0.6s cubic-bezier(0.23,1,0.32,1);">
+          <img src="Assets/image-collections.png" alt="Alphagraphs Collections dashboard" style="width:100%;height:auto;display:block;" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PROFILES SECTION
+     ============================================================ -->
+<section id="profiles" class="sticky-section bg-[#010101]" style="z-index: 2; overflow: visible; padding: 160px 0 128px;">
+  <!-- Watermark (right-aligned, desplazamiento izquierda) -->
+  <div class="noise-overlay"></div>
+  <div id="wm-profiles" class="watermark text-white" style="top: 0; right: 0; opacity: 0.13;">PROFILES</div>
+
+  <div class="max-w-7xl mx-auto px-12 relative z-10">
+    <div class="flex items-center gap-20">
+      <!-- App screenshot -->
+      <div class="flex-1">
+        <div id="profiles-img-wrap" class="rounded-2xl overflow-hidden" style="cursor: pointer; transition: transform 0.6s cubic-bezier(0.23,1,0.32,1);">
+          <img src="Assets/image-profiles.png" alt="Alphagraphs Profiles dashboard" style="width:100%;height:auto;display:block;" />
+        </div>
+      </div>
+
+      <!-- Text (right) -->
+      <div class="flex-shrink-0" style="width: 438px;">
+        <h2 class="font-montserrat font-bold text-white uppercase mb-6" style="font-size: clamp(28px, 2.5vw, 40px); line-height: 1.2;">
+          Track Any Wallet &amp; Profile
+        </h2>
+        <p class="font-montserrat font-medium text-white/80" style="font-size: clamp(16px, 1.1vw, 20px); line-height: 1.6;">
+          Follow influential wallets, analyze holding patterns, and benchmark your own portfolio against top collectors. Full transparency into on-chain activity.
+        </p>
+        <a href="#" class="mt-8 inline-flex btn-outline font-montserrat font-semibold px-6 py-3 rounded-xl cursor-pointer text-sm items-center gap-2">
+          Explore Profiles
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     MINTS SECTION
+     ============================================================ -->
+<section id="mints" class="sticky-section overflow-hidden gradient-mints" style="z-index: 3; padding: 192px 0 128px;">
+  <!-- Watermark (desplazamiento derecha, igual que COLLECTIONS) -->
+  <div class="noise-overlay"></div>
+  <div id="wm-mints" class="watermark text-white" style="top: 0; left: -10px;">MINTS</div>
+
+  <div class="max-w-7xl mx-auto px-12 relative z-10">
+    <div class="flex items-center gap-20">
+      <!-- Text -->
+      <div class="flex-shrink-0" style="width: 461px;">
+        <h2 class="font-montserrat font-bold text-white uppercase mb-6" style="font-size: clamp(28px, 2.5vw, 40px); line-height: 1.2;">
+          Never Miss a Mint Again
+        </h2>
+        <p class="font-montserrat font-medium text-white/80" style="font-size: clamp(16px, 1.1vw, 20px); line-height: 1.6;">
+          Real-time mint tracking across all chains. Get alerts, analyze team history, community sentiment, and rarity distribution before you commit.
+        </p>
+        <a href="#" class="mt-8 inline-flex btn-outline font-montserrat font-semibold px-6 py-3 rounded-xl cursor-pointer text-sm items-center gap-2">
+          View Upcoming Mints
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- App screenshot -->
+      <div class="flex-1 flex justify-end">
+        <div id="mints-img-wrap" class="rounded-2xl overflow-hidden" style="max-width: 700px; width: 100%; cursor: pointer; transition: transform 0.6s cubic-bezier(0.23,1,0.32,1);">
+          <img src="Assets/image-mints.png" alt="Alphagraphs Mints dashboard" style="width:100%;height:auto;display:block;" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PORTFOLIO SECTION
+     ============================================================ -->
+<section id="portfolio" class="sticky-section overflow-hidden bg-[#F9F9F9]" style="z-index: 4; padding: 224px 0 128px;">
+  <!-- Watermark (desplazamiento derecha) -->
+  <div class="noise-overlay"></div>
+  <div id="wm-portfolio" class="watermark text-black" style="top: 0; left: -10px;">PORTFOLIO</div>
+
+  <div class="max-w-7xl mx-auto px-12 relative z-10">
+    <div class="flex items-center gap-20">
+      <!-- App screenshot -->
+      <div class="flex-1">
+        <div id="portfolio-img-wrap" class="rounded-2xl overflow-hidden" style="cursor: pointer; transition: transform 0.6s cubic-bezier(0.23,1,0.32,1);">
+          <img src="Assets/image-portfolios.png" alt="Alphagraphs Portfolio dashboard" style="width:100%;height:auto;display:block;" />
+        </div>
+      </div>
+
+      <!-- Text (right) -->
+      <div class="flex-shrink-0" style="width: 438px;">
+        <h2 class="font-montserrat font-bold text-black uppercase mb-6" style="font-size: clamp(28px, 2.5vw, 40px); line-height: 1.2;">
+          Your Portfolio, Fully Visible
+        </h2>
+        <p class="font-montserrat font-medium text-black/70" style="font-size: clamp(16px, 1.1vw, 20px); line-height: 1.6;">
+          See your entire NFT portfolio in one place — across every chain and marketplace. Track unrealized gains, transaction history, and P&L with precision.
+        </p>
+        <a href="#" class="mt-8 inline-flex items-center gap-2 font-montserrat font-semibold px-6 py-3 rounded-xl cursor-pointer text-sm border border-black text-black hover:bg-black/5 transition-colors">
+          Build Your Portfolio
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PARTNERS SECTION
+     ============================================================ -->
+<section class="bg-black py-24">
+  <div class="max-w-7xl mx-auto px-12">
+    <div class="flex flex-col items-center gap-16">
+      <h2 class="font-montserrat font-bold text-white uppercase text-center" style="font-size: clamp(24px, 2.5vw, 40px);">
+        Meet Our Partners
+      </h2>
+      <div class="flex items-center justify-center gap-24 flex-wrap">
+        <!-- 10K Project -->
+        <div class="partner-logo cursor-pointer">
+          <div class="flex items-center gap-2">
+            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+              <span class="text-white font-black text-sm">10K</span>
+            </div>
+            <span class="text-white font-bold text-xl">10K Project</span>
+          </div>
+        </div>
+        <!-- Chainlink -->
+        <div class="partner-logo cursor-pointer">
+          <div class="flex items-center gap-2">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Chainlink">
+              <circle cx="18" cy="18" r="18" fill="#2A5ADA"/>
+              <path d="M18 6 L24 9.5 L24 23.5 L18 27 L12 23.5 L12 9.5 Z" stroke="white" stroke-width="1.5" fill="none"/>
+              <path d="M18 12 L22 14.5 L22 20.5 L18 23 L14 20.5 L14 14.5 Z" fill="white" opacity="0.6"/>
+            </svg>
+            <span class="text-white font-bold text-xl">Chainlink</span>
+          </div>
+        </div>
+        <!-- OpenSea -->
+        <div class="partner-logo cursor-pointer">
+          <div class="flex items-center gap-2">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="OpenSea">
+              <circle cx="18" cy="18" r="18" fill="#2081E2"/>
+              <circle cx="18" cy="18" r="10" stroke="white" stroke-width="2" fill="none"/>
+              <path d="M12 18 Q18 10 24 18" stroke="white" stroke-width="2" fill="none"/>
+            </svg>
+            <span class="text-white font-bold text-xl">OpenSea</span>
+          </div>
+        </div>
+        <!-- Polygon -->
+        <div class="partner-logo cursor-pointer">
+          <div class="flex items-center gap-2">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Polygon">
+              <circle cx="18" cy="18" r="18" fill="#8247E5"/>
+              <polygon points="18,8 26,13 26,23 18,28 10,23 10,13" stroke="white" stroke-width="1.5" fill="none"/>
+            </svg>
+            <span class="text-white font-bold text-xl">Polygon</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     TESTIMONIALS SECTION
+     ============================================================ -->
+<section class="bg-[#010101] py-24 overflow-hidden">
+  <div class="max-w-5xl mx-auto px-12">
+    <div class="flex flex-col items-center gap-16">
+      <h2 class="font-montserrat font-bold text-white uppercase text-center" style="font-size: clamp(24px, 2.5vw, 40px); max-width: 662px; line-height: 1.2;">
+        Our Community Is Saying
+      </h2>
+
+      <!-- 2-column testimonial grid -->
+      <div class="grid grid-cols-2 gap-6 w-full">
+        <!-- Left column (offset down) -->
+        <div class="flex flex-col gap-6 pt-12">
+          <!-- Card 1 -->
+          <article class="testimonial-card p-6 border border-white/10">
+            <p class="font-montserrat font-semibold text-[#E0E0E0] text-sm leading-relaxed tracking-wide mb-6">
+              "@alphagraphs is an absolute game changer. I spotted a blue-chip collection 3 hours before it blew up. The floor price tracker is insane 🔥 <span class="mention">@alphagraphs</span> never misses."
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center overflow-hidden">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <div>
+                  <div class="font-opensans font-semibold text-white text-base">CryptoKing</div>
+                  <div class="font-opensans font-semibold text-white/40 text-sm">@cryptoking_eth</div>
+                </div>
+              </div>
+              <!-- Twitter/X icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#1DA1F2" aria-label="Twitter">
+                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+              </svg>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="testimonial-card p-6 border border-white/10">
+            <p class="font-montserrat font-semibold text-[#E0E0E0] text-sm leading-relaxed tracking-wide mb-6">
+              "Finally a tool that shows me real mint data before it's too late. Used <span class="mention">@alphagraphs</span> to analyze 3 mints last week — 2 were rugs, 1 was a 10x. Worth every penny."
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <div>
+                  <div class="font-opensans font-semibold text-white text-base">NFTHunter</div>
+                  <div class="font-opensans font-semibold text-white/40 text-sm">@nfthunter_sol</div>
+                </div>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#1DA1F2" aria-label="Twitter">
+                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+              </svg>
+            </div>
+          </article>
+        </div>
+
+        <!-- Right column (offset up) -->
+        <div class="flex flex-col gap-6 pb-12">
+          <!-- Card 3 -->
+          <article class="testimonial-card p-6 border border-white/10">
+            <p class="font-montserrat font-semibold text-[#E0E0E0] text-sm leading-relaxed tracking-wide mb-6">
+              "The wallet tracking feature alone is worth it. I follow 20+ alpha wallets and get alerts the moment they buy. <span class="mention">@alphagraphs</span> is my secret weapon 💎"
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <div>
+                  <div class="font-opensans font-semibold text-white text-base">WhaleWatcher</div>
+                  <div class="font-opensans font-semibold text-white/40 text-sm">@whalewatcher_nft</div>
+                </div>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#1DA1F2" aria-label="Twitter">
+                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+              </svg>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="testimonial-card p-6 border border-white/10">
+            <p class="font-montserrat font-semibold text-[#E0E0E0] text-sm leading-relaxed tracking-wide mb-6">
+              "Switched from 4 different tools to just <span class="mention">@alphagraphs</span>. Collections, profiles, mints, portfolio — it's all here. The UI is beautiful and the data is lightning fast."
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-green-500 to-teal-400 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <div>
+                  <div class="font-opensans font-semibold text-white text-base">ApeAlpha</div>
+                  <div class="font-opensans font-semibold text-white/40 text-sm">@apealpha_xyz</div>
+                </div>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#1DA1F2" aria-label="Twitter">
+                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+              </svg>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PRICING SECTION
+     ============================================================ -->
+<section id="pricing" class="relative bg-black py-24 overflow-hidden">
+  <!-- Glow orb behind price -->
+  <div class="glow-orb" style="top: 50%; left: 50%; transform: translate(-50%, -50%); width: 700px; height: 700px;"></div>
+
+  <div class="max-w-5xl mx-auto px-12 relative z-10">
+    <div class="flex flex-col items-center gap-12">
+      <h2 class="font-montserrat font-semibold text-white uppercase text-center" style="font-size: clamp(24px, 2.5vw, 40px);">
+        Pricing Adapted To Any Need
+      </h2>
+
+      <!-- Switcher -->
+      <div class="bg-[#00CCCB] rounded-xl p-1.5 flex gap-1" role="tablist" aria-label="Billing period">
+        <button id="tab-monthly" role="tab" aria-selected="true" class="switcher-option active font-montserrat font-bold px-8 py-2 rounded-lg text-white cursor-pointer transition-all duration-200" onclick="switchPricing('monthly')" style="font-size: clamp(16px, 1.5vw, 28px);">
+          Monthly
+        </button>
+        <button id="tab-yearly" role="tab" aria-selected="false" class="switcher-option font-montserrat font-bold px-8 py-2 rounded-lg text-black cursor-pointer transition-all duration-200" onclick="switchPricing('yearly')" style="font-size: clamp(16px, 1.5vw, 28px);">
+          Yearly
+        </button>
+      </div>
+
+      <!-- Price display -->
+      <div class="text-center">
+        <div class="font-montserrat font-black text-[#00CCCB] neon-text leading-none" style="font-size: clamp(60px, 8vw, 110px);">FREE</div>
+        <div class="font-montserrat font-black text-[#00CCCB] neon-text leading-none" style="font-size: clamp(40px, 5vw, 73px);">to use</div>
+        <p class="text-white/60 font-medium mt-4" style="font-size: clamp(14px, 1vw, 18px);">No credit card required · Upgrade anytime</p>
+      </div>
+
+      <!-- Pricing cards -->
+      <div class="grid grid-cols-3 gap-6 w-full">
+        <!-- Free -->
+        <div class="bg-[#17171A] rounded-2xl p-8 border border-white/10 flex flex-col gap-6">
+          <div>
+            <div class="text-white/50 text-sm font-semibold uppercase tracking-widest mb-2">Free</div>
+            <div class="text-white font-black text-4xl">$0<span class="text-white/40 text-lg font-medium">/mo</span></div>
+          </div>
+          <ul class="flex flex-col gap-3 flex-1">
+            <li class="flex items-center gap-2 text-white/80 text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00CCCB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              10 collection watchlist
+            </li>
+            <li class="flex items-center gap-2 text-white/80 text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00CCCB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Basic portfolio tracking
+            </li>
+            <li class="flex items-center gap-2 text-white/80 text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00CCCB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Mint calendar access
+            </li>
+            <li class="flex items-center gap-2 text-white/40 text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              Real-time alerts
+            </li>
+            <li class="flex items-center gap-2 text-white/40 text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              Whale wallet tracking
+            </li>
+          </ul>
+          <button class="btn-outline w-full py-3 rounded-xl font-montserrat font-bold text-sm cursor-pointer">Get Started</button>
+        </div>
+
+        <!-- Pro (featured) -->
+        <div class="bg-[#17171A] rounded-2xl p-8 border border-[#00CCCB] flex flex-col gap-6 relative" style="box-shadow: 0 0 30px rgba(0,204,203,0.2);">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#00CCCB] text-black text-xs font-black px-4 py-1 rounded-full uppercase tracking-widest">Most Popular</div>
+          <div>
+            <div class="text-[#00CCCB] text-sm font-semibold uppercase tracking-widest mb-2">Pro</div>
+            <div class="text-white font-black text-4xl" id="pro-price">$29<span class="text-white/40 text-lg font-medium">/mo</span></div>
+          </div>
+          <ul class="flex flex-col gap-3 flex-1">
+            <li class="flex items-center gap-2 text-white/80 text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00CCCB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Unlimited watchlists
+            </li>
+            <li class="flex items-center gap-2 text-white/80 text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00CCCB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Full portfolio analytics
+            </li>
+            <li class="flex items-center gap-2 text-white/80 text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00CCCB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Real-time price alerts
+            </li>
+            <li class="flex items-center gap-2 text-white/80 text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00CCCB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Whale wallet tracking
+            </li>
+            <li class="flex items-center gap-2 text-white/40 text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              API access
+            </li>
+          </ul>
+          <button class="btn-solid w-full py-3 rounded-xl font-montserrat font-bold text-sm cursor-pointer">Upgrade to Pro</button>
+        </div>
+
+        <!-- Enterprise -->
+        <div class="bg-[#17171A] rounded-2xl p-8 border border-white/10 flex flex-col gap-6">
+          <div>
+            <div class="text-white/50 text-sm font-semibold uppercase tracking-widest mb-2">Enterprise</div>
+            <div class="text-white font-black text-4xl" id="ent-price">$99<span class="text-white/40 text-lg font-medium">/mo</span></div>
+          </div>
+          <ul class="flex flex-col gap-3 flex-1">
+            <li class="flex items-center gap-2 text-white/80 text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00CCCB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Everything in Pro
+            </li>
+            <li class="flex items-center gap-2 text-white/80 text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00CCCB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Full API access
+            </li>
+            <li class="flex items-center gap-2 text-white/80 text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00CCCB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Custom reports & exports
+            </li>
+            <li class="flex items-center gap-2 text-white/80 text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00CCCB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Team collaboration
+            </li>
+            <li class="flex items-center gap-2 text-white/80 text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00CCCB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Priority support
+            </li>
+          </ul>
+          <button class="btn-outline w-full py-3 rounded-xl font-montserrat font-bold text-sm cursor-pointer">Contact Sales</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FAQ SECTION
+     ============================================================ -->
+<section id="faq" class="bg-[#010101] py-24">
+  <div class="max-w-4xl mx-auto px-12">
+    <div class="flex flex-col items-center gap-12">
+      <h2 class="font-montserrat font-bold text-white uppercase text-center" style="font-size: clamp(24px, 2.5vw, 40px);">
+        FAQ
+      </h2>
+
+      <div class="flex flex-col gap-4 w-full" role="list">
+        <!-- Q1 (open by default) -->
+        <div class="faq-item open bg-[#17171A] border border-[#00CCCB] rounded-2xl overflow-hidden cursor-pointer" style="box-shadow: 6px 4px 1px 0px #00CCCB;" onclick="toggleFAQ(this)" role="listitem" aria-expanded="true">
+          <div class="flex items-center justify-between px-8 py-6">
+            <h3 class="font-montserrat font-medium text-white" style="font-size: clamp(16px, 1.8vw, 32px);">What blockchains does Alphagraphs support?</h3>
+            <span class="faq-caret text-[#00CCCB] text-2xl flex-shrink-0 ml-4" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </div>
+          <div class="faq-answer">
+            <p class="text-[#898989] font-montserrat font-medium px-8 pb-8" style="font-size: clamp(14px, 1vw, 20px); line-height: 1.6;">
+              Alphagraphs currently supports Ethereum, Solana, Polygon, BNB Chain, and Avalanche. We are actively working on adding support for additional chains including Base, Optimism, and Arbitrum. New chains are added based on community demand and ecosystem growth.
+            </p>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="faq-item bg-[#17171A] border border-[#00CCCB] rounded-2xl overflow-hidden cursor-pointer" style="box-shadow: 6px 4px 1px 0px #00CCCB;" onclick="toggleFAQ(this)" role="listitem" aria-expanded="false">
+          <div class="flex items-center justify-between px-8 py-6">
+            <h3 class="font-montserrat font-medium text-white" style="font-size: clamp(16px, 1.8vw, 32px);">Is my wallet data secure?</h3>
+            <span class="faq-caret text-[#00CCCB] text-2xl flex-shrink-0 ml-4" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </div>
+          <div class="faq-answer">
+            <p class="text-[#898989] font-montserrat font-medium px-8 pb-8" style="font-size: clamp(14px, 1vw, 20px); line-height: 1.6;">
+              Absolutely. Alphagraphs is a read-only analytics platform. We never ask for private keys or seed phrases. All data is sourced from public blockchain data. You can track any wallet simply by entering its public address — no wallet connection required.
+            </p>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="faq-item bg-[#17171A] border border-[#00CCCB] rounded-2xl overflow-hidden cursor-pointer" style="box-shadow: 6px 4px 1px 0px #00CCCB;" onclick="toggleFAQ(this)" role="listitem" aria-expanded="false">
+          <div class="flex items-center justify-between px-8 py-6">
+            <h3 class="font-montserrat font-medium text-white" style="font-size: clamp(16px, 1.8vw, 32px);">How real-time is the data?</h3>
+            <span class="faq-caret text-[#00CCCB] text-2xl flex-shrink-0 ml-4" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </div>
+          <div class="faq-answer">
+            <p class="text-[#898989] font-montserrat font-medium px-8 pb-8" style="font-size: clamp(14px, 1vw, 20px); line-height: 1.6;">
+              Pro and Enterprise plans receive real-time data with sub-second updates on price changes, sales, and wallet activity. The Free plan receives data with a 5-minute delay. Our infrastructure processes millions of on-chain events per day to keep you ahead of the market.
+            </p>
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="faq-item bg-[#17171A] border border-[#00CCCB] rounded-2xl overflow-hidden cursor-pointer" style="box-shadow: 6px 4px 1px 0px #00CCCB;" onclick="toggleFAQ(this)" role="listitem" aria-expanded="false">
+          <div class="flex items-center justify-between px-8 py-6">
+            <h3 class="font-montserrat font-medium text-white" style="font-size: clamp(16px, 1.8vw, 32px);">Can I cancel my subscription anytime?</h3>
+            <span class="faq-caret text-[#00CCCB] text-2xl flex-shrink-0 ml-4" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </div>
+          <div class="faq-answer">
+            <p class="text-[#898989] font-montserrat font-medium px-8 pb-8" style="font-size: clamp(14px, 1vw, 20px); line-height: 1.6;">
+              Yes, you can cancel your subscription at any time from your account settings. There are no cancellation fees or long-term commitments. Your plan stays active until the end of the current billing period, then automatically reverts to the Free tier.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     NEWSLETTER SECTION
+     ============================================================ -->
+<section class="relative bg-black py-24 overflow-hidden">
+  <!-- Glow orb -->
+  <div class="glow-orb" style="top: 50%; left: 50%; transform: translate(-50%, -50%); width: 760px; height: 400px; border-radius: 50%;"></div>
+
+  <div class="max-w-3xl mx-auto px-12 relative z-10">
+    <div class="flex flex-col items-center gap-10">
+      <h2 class="font-montserrat font-semibold text-white uppercase text-center" style="font-size: clamp(24px, 2.5vw, 40px); max-width: 662px; line-height: 1.2;">
+        Newsletter
+      </h2>
+      <p class="text-white/60 font-montserrat font-medium text-center" style="font-size: clamp(14px, 1vw, 18px);">
+        Get the latest NFT alpha, market insights, and platform updates delivered to your inbox.
+      </p>
+
+      <!-- Input row -->
+      <form class="newsletter-input flex w-full max-w-2xl overflow-hidden" onsubmit="handleSubscribe(event)">
+        <div class="flex-1 px-6" style="background: rgba(0,204,203,0.1);">
+          <input
+            type="email"
+            placeholder="enter your email"
+            class="w-full h-20 bg-transparent text-white font-montserrat font-medium outline-none placeholder-[#898989]"
+            style="font-size: clamp(16px, 1.2vw, 24px);"
+            aria-label="Email address for newsletter"
+          />
+        </div>
+        <button
+          type="submit"
+          class="bg-[#00CCCB] text-black font-montserrat font-bold uppercase px-8 h-20 cursor-pointer flex-shrink-0 hover:bg-opacity-90 transition-all duration-200"
+          style="font-size: clamp(14px, 1.5vw, 28px);"
+        >
+          Subscribe
+        </button>
+      </form>
+      <p id="subscribe-msg" class="text-[#84F4B8] text-sm font-montserrat hidden">
+        You're subscribed! Welcome to the Alphagraphs community.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER / CONTACT
+     ============================================================ -->
+<footer class="relative bg-black overflow-hidden pt-24 pb-12">
+  <!-- Decorative wave SVG -->
+  <div class="absolute top-0 left-0 right-0 pointer-events-none wave-line">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M0,40 C200,80 400,0 600,40 C800,80 1000,0 1200,40 C1350,65 1420,30 1440,40 L1440,0 L0,0 Z" fill="rgba(0,204,203,0.05)"/>
+      <path d="M0,40 C200,80 400,0 600,40 C800,80 1000,0 1200,40 C1350,65 1420,30 1440,40" fill="none" stroke="rgba(0,204,203,0.2)" stroke-width="1.5"/>
+    </svg>
+  </div>
+
+  <!-- Decorative orbs -->
+  <div class="absolute pointer-events-none" style="bottom: -40px; left: -60px; opacity: 0.15;">
+    <div class="w-48 h-48 rounded-full bg-[#F7931A] blur-3xl"></div>
+  </div>
+  <div class="absolute pointer-events-none" style="bottom: -20px; right: 80px; opacity: 0.12;">
+    <div class="w-40 h-40 rounded-full bg-[#627EEA] blur-3xl"></div>
+  </div>
+  <div class="absolute pointer-events-none" style="top: 80px; right: -40px; opacity: 0.10;">
+    <div class="w-36 h-36 rounded-full bg-[#9945FF] blur-3xl"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-12 relative z-10">
+    <!-- CONTACT US heading -->
+    <div class="mb-16">
+      <h2 class="font-montserrat text-white leading-none" style="font-size: clamp(48px, 9vw, 128px);">
+        <span style="font-weight: 900;">CONTACT </span><span style="font-weight: 400;">us</span>
+      </h2>
+    </div>
+
+    <hr class="section-divider mb-12" />
+
+    <!-- Footer content row -->
+    <div class="flex items-start justify-between gap-16 flex-wrap">
+      <!-- Logo + description -->
+      <div class="flex flex-col gap-6 max-w-xs">
+        <div class="flex items-center gap-2">
+          <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Alphagraphs logo">
+            <circle cx="20" cy="20" r="18" stroke="#00CCCB" stroke-width="3"/>
+            <path d="M10 28 L20 10 L30 28" stroke="#00CCCB" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M14 22 H26" stroke="#00CCCB" stroke-width="2"/>
+            <circle cx="20" cy="10" r="3" fill="#00CCCB"/>
+          </svg>
+          <span class="font-montserrat font-black text-white text-xl tracking-tight">ALPHAGRAPHS</span>
+        </div>
+        <p class="text-white/40 text-sm font-montserrat leading-relaxed">
+          The most powerful NFT analytics platform. Track, analyze, and discover alpha across all major blockchains.
+        </p>
+      </div>
+
+      <!-- Navigation links -->
+      <div class="flex flex-col gap-4">
+        <div class="text-white/50 text-xs font-semibold uppercase tracking-widest mb-2">Platform</div>
+        <a href="#collections" class="text-white/70 hover:text-[#00CCCB] transition-colors text-sm font-montserrat cursor-pointer">Collections</a>
+        <a href="#profiles" class="text-white/70 hover:text-[#00CCCB] transition-colors text-sm font-montserrat cursor-pointer">Profiles</a>
+        <a href="#mints" class="text-white/70 hover:text-[#00CCCB] transition-colors text-sm font-montserrat cursor-pointer">Mints</a>
+        <a href="#portfolio" class="text-white/70 hover:text-[#00CCCB] transition-colors text-sm font-montserrat cursor-pointer">Portfolio</a>
+        <a href="#pricing" class="text-white/70 hover:text-[#00CCCB] transition-colors text-sm font-montserrat cursor-pointer">Pricing</a>
+      </div>
+
+      <!-- Company links -->
+      <div class="flex flex-col gap-4">
+        <div class="text-white/50 text-xs font-semibold uppercase tracking-widest mb-2">Company</div>
+        <a href="#" class="text-white/70 hover:text-[#00CCCB] transition-colors text-sm font-montserrat cursor-pointer">About</a>
+        <a href="#" class="text-white/70 hover:text-[#00CCCB] transition-colors text-sm font-montserrat cursor-pointer">Blog</a>
+        <a href="#" class="text-white/70 hover:text-[#00CCCB] transition-colors text-sm font-montserrat cursor-pointer">Careers</a>
+        <a href="#faq" class="text-white/70 hover:text-[#00CCCB] transition-colors text-sm font-montserrat cursor-pointer">FAQ</a>
+        <a href="#" class="text-white/70 hover:text-[#00CCCB] transition-colors text-sm font-montserrat cursor-pointer">Privacy Policy</a>
+      </div>
+
+      <!-- Social links -->
+      <div class="flex flex-col gap-4">
+        <div class="text-white/50 text-xs font-semibold uppercase tracking-widest mb-2">Community</div>
+        <a href="#" class="flex items-center gap-2 text-white/70 hover:text-[#00CCCB] transition-colors text-sm font-montserrat cursor-pointer">
+          <!-- Twitter/X icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+          </svg>
+          @alphagraphs
+        </a>
+        <a href="#" class="flex items-center gap-2 text-white/70 hover:text-[#00CCCB] transition-colors text-sm font-montserrat cursor-pointer">
+          <!-- Discord icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.079.11 18.1.127 18.113a19.904 19.904 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
+          </svg>
+          @alphgraphs
+        </a>
+        <a href="#" class="flex items-center gap-2 text-white/70 hover:text-[#00CCCB] transition-colors text-sm font-montserrat cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 2H3v16h5v4l4-4h5l4-4V2zM11 11V7M16 11V7"/></svg>
+          Discord Server
+        </a>
+      </div>
+    </div>
+
+    <hr class="section-divider my-10" />
+
+    <!-- Copyright -->
+    <div class="flex items-center justify-between text-white/40 text-sm font-montserrat flex-wrap gap-4">
+      <span>© Alphagraphs – 2023. All rights reserved.</span>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-white/60 transition-colors cursor-pointer">Terms of Service</a>
+        <a href="#" class="hover:text-white/60 transition-colors cursor-pointer">Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  /* ── Pricing switcher ── */
+  function switchPricing(period) {
+    const monthly = { pro: '$29', ent: '$99' };
+    const yearly  = { pro: '$23', ent: '$79' };
+    const prices  = period === 'monthly' ? monthly : yearly;
+
+    document.getElementById('pro-price').innerHTML =
+      prices.pro + '<span class="text-white/40 text-lg font-medium">/mo</span>';
+    document.getElementById('ent-price').innerHTML =
+      prices.ent + '<span class="text-white/40 text-lg font-medium">/mo</span>';
+
+    document.getElementById('tab-monthly').classList.toggle('active', period === 'monthly');
+    document.getElementById('tab-yearly').classList.toggle('active', period === 'yearly');
+    document.getElementById('tab-monthly').setAttribute('aria-selected', period === 'monthly');
+    document.getElementById('tab-yearly').setAttribute('aria-selected', period === 'yearly');
+  }
+
+  /* ── FAQ accordion ── */
+  function toggleFAQ(el) {
+    const isOpen = el.classList.contains('open');
+    // close all
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.classList.remove('open');
+      item.setAttribute('aria-expanded', 'false');
+    });
+    // open clicked if it was closed
+    if (!isOpen) {
+      el.classList.add('open');
+      el.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  /* ── Newsletter subscribe ── */
+  function handleSubscribe(e) {
+    e.preventDefault();
+    const msg = document.getElementById('subscribe-msg');
+    msg.classList.remove('hidden');
+    e.target.reset();
+    setTimeout(() => msg.classList.add('hidden'), 6000);
+  }
+
+  /* ── Keyboard support for FAQ ── */
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.setAttribute('tabindex', '0');
+    item.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleFAQ(item);
+      }
+    });
+  });
+
+  /* ── Reduced motion ── */
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.ticker-track').forEach(el => {
+      el.style.animation = 'none';
+    });
+  } else {
+  /* ── Collections image: tilt suave en hover ── */
+    const colImg = document.getElementById('collections-img-wrap');
+    colImg.addEventListener('mouseenter', () => {
+      colImg.style.transform = 'translateY(-8px)';
+    });
+    colImg.addEventListener('mouseleave', () => {
+      colImg.style.transform = 'translateY(0)';
+    });
+
+  /* ── Watermark scroll: COLLECTIONS → derecha ── */
+    const wmCollections = document.getElementById('wm-collections');
+    const sectionCollections = wmCollections.closest('section');
+    function updateCollectionsWatermark() {
+      const rect = sectionCollections.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight && rect.bottom > 0;
+      if (!inView) return;
+      const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+      const x = progress * 220 - 10;
+      wmCollections.style.transform = `translateX(${x}px)`;
+    }
+
+    /* ── Parallax hero background ── */
+    const heroBg = document.getElementById('hero-bg');
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const offset = 30 + scrollY * 0.05;
+      heroBg.style.backgroundPosition = `center ${offset}%`;
+      updateCollectionsWatermark();
+      updateProfilesWatermark();
+      updateMintsWatermark();
+      updatePortfolioWatermark();
+    }, { passive: true });
+    updateCollectionsWatermark();
+
+    /* ── Watermark scroll: PROFILES → izquierda ── */
+    const wmProfiles = document.getElementById('wm-profiles');
+    const sectionProfiles = wmProfiles.closest('section');
+    function updateProfilesWatermark() {
+      const rect = sectionProfiles.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight && rect.bottom > 0;
+      if (!inView) return;
+      const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+      // entra desde la derecha, se desplaza hacia la izquierda
+      const x = 80 - progress * 220;
+      wmProfiles.style.transform = `translateX(${x}px)`;
+    }
+    updateProfilesWatermark();
+
+
+    /* ── Watermark scroll: MINTS → derecha (igual que COLLECTIONS) ── */
+    const wmMints = document.getElementById('wm-mints');
+    const sectionMints = wmMints.closest('section');
+    function updateMintsWatermark() {
+      const rect = sectionMints.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight && rect.bottom > 0;
+      if (!inView) return;
+      const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+      const x = progress * 220 - 10;
+      wmMints.style.transform = `translateX(${x}px)`;
+    }
+    updateMintsWatermark();
+
+    /* ── Mints image hover ── */
+    const mintsImg = document.getElementById('mints-img-wrap');
+    mintsImg.addEventListener('mouseenter', () => { mintsImg.style.transform = 'translateY(-8px)'; });
+    mintsImg.addEventListener('mouseleave', () => { mintsImg.style.transform = 'translateY(0)'; });
+
+    /* ── Profiles image hover ── */
+    const profImg = document.getElementById('profiles-img-wrap');
+    profImg.addEventListener('mouseenter', () => { profImg.style.transform = 'translateY(-8px)'; });
+    profImg.addEventListener('mouseleave', () => { profImg.style.transform = 'translateY(0)'; });
+
+    /* ── Watermark scroll: PORTFOLIO → derecha ── */
+    const wmPortfolio = document.getElementById('wm-portfolio');
+    const sectionPortfolio = wmPortfolio.closest('section');
+    function updatePortfolioWatermark() {
+      const rect = sectionPortfolio.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight && rect.bottom > 0;
+      if (!inView) return;
+      const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+      const x = progress * 220 - 10;
+      wmPortfolio.style.transform = `translateX(${x}px)`;
+    }
+    updatePortfolioWatermark();
+
+    /* ── Portfolio image hover ── */
+    const portImg = document.getElementById('portfolio-img-wrap');
+    portImg.addEventListener('mouseenter', () => { portImg.style.transform = 'translateY(-8px)'; });
+    portImg.addEventListener('mouseleave', () => { portImg.style.transform = 'translateY(0)'; });
+  }
+</script>
+</body>
+</html>
