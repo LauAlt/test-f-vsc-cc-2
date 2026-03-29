@@ -156,28 +156,29 @@
     .wave-line { mix-blend-mode: hard-light; }
 
     /* ── Noise texture overlay ── */
-    @keyframes noise-shift {
-      0%   { transform: translate(0, 0); }
-      20%  { transform: translate(-2px, 2px); }
-      40%  { transform: translate(-2px, -2px); }
-      60%  { transform: translate(2px, 2px); }
-      80%  { transform: translate(2px, -2px); }
-      100% { transform: translate(0, 0); }
-    }
     .noise-overlay {
       position: absolute;
-      inset: -20%;
-      width: 140%;
-      height: 140%;
+      inset: 0;
       pointer-events: none;
       z-index: 5;
-      opacity: 0.035;
-      animation: noise-shift 0.15s steps(1) infinite;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-      background-size: 200px 200px;
+      opacity: 0.09;
+      background-repeat: repeat;
+      background-size: 256px 256px;
     }
-    /* Noise más visible en sección clara (Portfolio) */
-    #portfolio .noise-overlay { opacity: 0.045; }
+    #portfolio .noise-overlay { opacity: 0.06; mix-blend-mode: multiply; }
+
+    /* ── Floating coin: sin animación CSS, movimiento controlado por JS scroll ── */
+
+    /* ── Navbar dark mode (sobre fondo claro) ── */
+    header.nav-light nav {
+      background: rgba(255,255,255,0.75);
+    }
+    header.nav-light nav a,
+    header.nav-light nav ul li a {
+      color: #111 !important;
+    }
+    header.nav-light nav .w-px { background: rgba(0,0,0,0.2); }
+    header.nav-light nav svg path { fill: #111; }
 
     /* ── Sticky card stack ── */
     .sticky-section {
@@ -407,7 +408,7 @@
 <!-- ============================================================
      PROFILES SECTION
      ============================================================ -->
-<section id="profiles" class="sticky-section bg-[#010101]" style="z-index: 2; overflow: visible; padding: 160px 0 128px;">
+<section id="profiles" class="sticky-section bg-[#010101]" style="z-index: 2; overflow: visible; padding: 240px 0 128px;">
   <!-- Watermark (right-aligned, desplazamiento izquierda) -->
   <div class="noise-overlay"></div>
   <div id="wm-profiles" class="watermark text-white" style="top: 0; right: 0; opacity: 0.13;">PROFILES</div>
@@ -442,7 +443,7 @@
 <!-- ============================================================
      MINTS SECTION
      ============================================================ -->
-<section id="mints" class="sticky-section overflow-hidden gradient-mints" style="z-index: 3; padding: 192px 0 128px;">
+<section id="mints" class="sticky-section overflow-hidden gradient-mints" style="z-index: 3; padding: 240px 0 128px;">
   <!-- Watermark (desplazamiento derecha, igual que COLLECTIONS) -->
   <div class="noise-overlay"></div>
   <div id="wm-mints" class="watermark text-white" style="top: 0; left: -10px;">MINTS</div>
@@ -457,7 +458,7 @@
         <p class="font-montserrat font-medium text-white/80" style="font-size: clamp(16px, 1.1vw, 20px); line-height: 1.6;">
           Real-time mint tracking across all chains. Get alerts, analyze team history, community sentiment, and rarity distribution before you commit.
         </p>
-        <a href="#" class="mt-8 inline-flex btn-outline font-montserrat font-semibold px-6 py-3 rounded-xl cursor-pointer text-sm items-center gap-2">
+        <a href="#" class="mt-8 inline-flex font-montserrat font-semibold px-6 py-3 rounded-xl cursor-pointer text-sm items-center gap-2" style="background:#000; color:#fff; border:1.5px solid #000; transition: opacity 0.2s;" onmouseenter="this.style.opacity='0.8'" onmouseleave="this.style.opacity='1'">
           View Upcoming Mints
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
@@ -477,7 +478,7 @@
 <!-- ============================================================
      PORTFOLIO SECTION
      ============================================================ -->
-<section id="portfolio" class="sticky-section overflow-hidden bg-[#F9F9F9]" style="z-index: 4; padding: 224px 0 128px;">
+<section id="portfolio" class="sticky-section overflow-hidden bg-[#F9F9F9]" style="z-index: 4; padding: 240px 0 128px;">
   <!-- Watermark (desplazamiento derecha) -->
   <div class="noise-overlay"></div>
   <div id="wm-portfolio" class="watermark text-black" style="top: 0; left: -10px;">PORTFOLIO</div>
@@ -510,6 +511,20 @@
 
 
 <!-- ============================================================
+     POST-PORTFOLIO WRAPPER (z-index > sticky portfolio para tapar el fondo blanco)
+     ============================================================ -->
+<div style="position: relative; z-index: 5; background: #000;">
+
+<!-- FLOATING COIN -->
+<div id="floating-coin-wrap" style="position: relative; height: 220px; background: #000; overflow: visible; z-index: 6;">
+  <img id="floating-coin" src="Assets/s_image.png" alt="Polygon coin"
+    style="position: absolute; right: 10%; top: -100px;
+           width: 200px; height: 200px; object-fit: contain;
+           filter: drop-shadow(0 0 40px rgba(138,71,229,0.6));
+           will-change: transform;" />
+</div>
+
+<!-- ============================================================
      PARTNERS SECTION
      ============================================================ -->
 <section class="bg-black py-24">
@@ -518,47 +533,54 @@
       <h2 class="font-montserrat font-bold text-white uppercase text-center" style="font-size: clamp(24px, 2.5vw, 40px);">
         Meet Our Partners
       </h2>
-      <div class="flex items-center justify-center gap-24 flex-wrap">
-        <!-- 10K Project -->
-        <div class="partner-logo cursor-pointer">
-          <div class="flex items-center gap-2">
-            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
-              <span class="text-white font-black text-sm">10K</span>
-            </div>
-            <span class="text-white font-bold text-xl">10K Project</span>
-          </div>
-        </div>
-        <!-- Chainlink -->
-        <div class="partner-logo cursor-pointer">
-          <div class="flex items-center gap-2">
-            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Chainlink">
-              <circle cx="18" cy="18" r="18" fill="#2A5ADA"/>
-              <path d="M18 6 L24 9.5 L24 23.5 L18 27 L12 23.5 L12 9.5 Z" stroke="white" stroke-width="1.5" fill="none"/>
-              <path d="M18 12 L22 14.5 L22 20.5 L18 23 L14 20.5 L14 14.5 Z" fill="white" opacity="0.6"/>
-            </svg>
-            <span class="text-white font-bold text-xl">Chainlink</span>
-          </div>
-        </div>
-        <!-- OpenSea -->
-        <div class="partner-logo cursor-pointer">
-          <div class="flex items-center gap-2">
-            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="OpenSea">
-              <circle cx="18" cy="18" r="18" fill="#2081E2"/>
-              <circle cx="18" cy="18" r="10" stroke="white" stroke-width="2" fill="none"/>
-              <path d="M12 18 Q18 10 24 18" stroke="white" stroke-width="2" fill="none"/>
-            </svg>
-            <span class="text-white font-bold text-xl">OpenSea</span>
-          </div>
-        </div>
-        <!-- Polygon -->
-        <div class="partner-logo cursor-pointer">
-          <div class="flex items-center gap-2">
-            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Polygon">
-              <circle cx="18" cy="18" r="18" fill="#8247E5"/>
-              <polygon points="18,8 26,13 26,23 18,28 10,23 10,13" stroke="white" stroke-width="1.5" fill="none"/>
-            </svg>
-            <span class="text-white font-bold text-xl">Polygon</span>
-          </div>
+      <!-- Marquee slider -->
+      <div class="partners-track-wrap" style="width:100%; overflow:hidden; position:relative;">
+        <!-- fade edges -->
+        <div style="position:absolute;left:0;top:0;bottom:0;width:120px;background:linear-gradient(to right,#000,transparent);z-index:2;pointer-events:none;"></div>
+        <div style="position:absolute;right:0;top:0;bottom:0;width:120px;background:linear-gradient(to left,#000,transparent);z-index:2;pointer-events:none;"></div>
+
+        <div class="partners-track" style="display:flex;align-items:center;gap:80px;width:max-content;">
+          <!-- SET 1 -->
+          <img src="Assets/10k-logo.png" alt="10K Project" style="height:36px;width:auto;filter:brightness(0) invert(1);" />
+          <img src="Assets/chainlink-logo.svg" alt="Chainlink" style="height:32px;width:auto;filter:brightness(0) invert(1);" />
+          <!-- Ethereum wordmark SVG -->
+          <svg height="32" viewBox="0 0 100 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Ethereum">
+            <text x="0" y="26" font-family="Arial,sans-serif" font-weight="700" font-size="26" fill="white">Ethereum</text>
+          </svg>
+          <!-- OpenSea wordmark -->
+          <svg height="32" viewBox="0 0 110 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="OpenSea">
+            <text x="0" y="26" font-family="Arial,sans-serif" font-weight="700" font-size="26" fill="white">OpenSea</text>
+          </svg>
+          <!-- Solana wordmark -->
+          <svg height="32" viewBox="0 0 110 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Solana">
+            <text x="0" y="26" font-family="Arial,sans-serif" font-weight="700" font-size="26" fill="white">Solana</text>
+          </svg>
+          <!-- MetaMask -->
+          <svg height="32" viewBox="0 0 130 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="MetaMask">
+            <text x="0" y="26" font-family="Arial,sans-serif" font-weight="700" font-size="26" fill="white">MetaMask</text>
+          </svg>
+          <!-- Rarible -->
+          <svg height="32" viewBox="0 0 100 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Rarible">
+            <text x="0" y="26" font-family="Arial,sans-serif" font-weight="700" font-size="26" fill="white">Rarible</text>
+          </svg>
+          <!-- SET 2 (duplicate for seamless loop) -->
+          <img src="Assets/10k-logo.png" alt="10K Project" style="height:36px;width:auto;filter:brightness(0) invert(1);" />
+          <img src="Assets/chainlink-logo.svg" alt="Chainlink" style="height:32px;width:auto;filter:brightness(0) invert(1);" />
+          <svg height="32" viewBox="0 0 100 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Ethereum">
+            <text x="0" y="26" font-family="Arial,sans-serif" font-weight="700" font-size="26" fill="white">Ethereum</text>
+          </svg>
+          <svg height="32" viewBox="0 0 110 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="OpenSea">
+            <text x="0" y="26" font-family="Arial,sans-serif" font-weight="700" font-size="26" fill="white">OpenSea</text>
+          </svg>
+          <svg height="32" viewBox="0 0 110 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Solana">
+            <text x="0" y="26" font-family="Arial,sans-serif" font-weight="700" font-size="26" fill="white">Solana</text>
+          </svg>
+          <svg height="32" viewBox="0 0 130 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="MetaMask">
+            <text x="0" y="26" font-family="Arial,sans-serif" font-weight="700" font-size="26" fill="white">MetaMask</text>
+          </svg>
+          <svg height="32" viewBox="0 0 100 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Rarible">
+            <text x="0" y="26" font-family="Arial,sans-serif" font-weight="700" font-size="26" fill="white">Rarible</text>
+          </svg>
         </div>
       </div>
     </div>
@@ -1032,6 +1054,7 @@
   </div>
 </footer>
 
+</div><!-- /post-portfolio wrapper -->
 
 <script>
   /* ── Pricing switcher ── */
@@ -1172,7 +1195,7 @@
       const inView = rect.top < window.innerHeight && rect.bottom > 0;
       if (!inView) return;
       const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
-      const x = progress * 220 - 10;
+      const x = 80 - progress * 220;
       wmPortfolio.style.transform = `translateX(${x}px)`;
     }
     updatePortfolioWatermark();
@@ -1181,6 +1204,56 @@
     const portImg = document.getElementById('portfolio-img-wrap');
     portImg.addEventListener('mouseenter', () => { portImg.style.transform = 'translateY(-8px)'; });
     portImg.addEventListener('mouseleave', () => { portImg.style.transform = 'translateY(0)'; });
+
+    /* ── Noise canvas ── */
+    const noiseCanvases = [];
+    function buildNoise() {
+      const c = document.createElement('canvas');
+      c.width = 256; c.height = 256;
+      const ctx = c.getContext('2d');
+      const img = ctx.createImageData(256, 256);
+      for (let i = 0; i < img.data.length; i += 4) {
+        const v = Math.random() * 255 | 0;
+        img.data[i] = img.data[i+1] = img.data[i+2] = v;
+        img.data[i+3] = 255;
+      }
+      ctx.putImageData(img, 0, 0);
+      return c.toDataURL();
+    }
+    // Pre-generate 4 noise frames for animation
+    const noiseFrames = [buildNoise(), buildNoise(), buildNoise(), buildNoise()];
+    let noiseFrame = 0;
+    const noiseEls = document.querySelectorAll('.noise-overlay');
+    noiseEls.forEach(el => { el.style.backgroundImage = `url(${noiseFrames[0]})`; });
+    setInterval(() => {
+      noiseFrame = (noiseFrame + 1) % noiseFrames.length;
+      const url = `url(${noiseFrames[noiseFrame]})`;
+      noiseEls.forEach(el => { el.style.backgroundImage = url; });
+    }, 120);
+
+    /* ── Navbar: oscurece sobre Portfolio (fondo claro) ── */
+    const navbar = document.querySelector('header');
+    function updateNavTheme() {
+      const pRect = sectionPortfolio.getBoundingClientRect();
+      const navH = navbar.offsetHeight;
+      const overLight = pRect.top < navH && pRect.bottom > navH;
+      navbar.classList.toggle('nav-light', overLight);
+    }
+    /* ── Floating coin: parallax viewport-relativo ── */
+    const coin = document.getElementById('floating-coin');
+    const coinWrap = document.getElementById('floating-coin-wrap');
+    function updateCoin() {
+      const rect = coinWrap.getBoundingClientRect();
+      const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+      const clamped = Math.max(0, Math.min(1, progress));
+      // sube 160px total mientras el usuario scrollea por la zona
+      coin.style.transform = `translateY(${clamped * -160}px)`;
+    }
+    window.addEventListener('scroll', updateCoin, { passive: true });
+    updateCoin();
+
+    window.addEventListener('scroll', updateNavTheme, { passive: true });
+    updateNavTheme();
   }
 </script>
 </body>
