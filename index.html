@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alphagraphs – Shaping Tomorrow's Digital World</title>
+  <title>Alphgraphs – Shaping Tomorrow's Digital World</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -42,6 +42,8 @@
     }
     .ticker-track { animation: ticker 30s linear infinite; display: flex; }
     .ticker-track:hover { animation-play-state: paused; }
+    .partners-track { animation: ticker 40s linear infinite; }
+    .partners-track:hover { animation-play-state: paused; }
 
     /* Watermark */
     .watermark {
@@ -80,6 +82,7 @@
       background: #17171A;
       border-radius: 16px;
       backdrop-filter: blur(5px);
+      filter: drop-shadow(6px 4px 1px #00CCCB);
     }
 
     /* Gradient sections */
@@ -98,8 +101,8 @@
     .faq-caret { transition: transform 0.3s ease; display: inline-block; }
 
     /* Pricing switcher */
-    .switcher-option { cursor: pointer; transition: all 0.2s; }
-    .switcher-option.active { background: #000; border-radius: 8px; }
+    .switcher-option { cursor: pointer; transition: all 0.2s; color: #000; }
+    .switcher-option.active { background: #000; border-radius: 8px; color: #fff !important; }
 
     /* Shining glow orb */
     .glow-orb {
@@ -201,7 +204,7 @@
   <nav class="navbar-glass rounded-full px-6 py-3 flex items-center gap-6">
     <!-- Logo -->
     <div class="flex items-center gap-2 flex-shrink-0">
-      <svg width="28" height="27" viewBox="0 0 44 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Alphagraphs logo">
+      <svg width="28" height="27" viewBox="0 0 44 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Alphgraphs logo">
         <path d="M26.206 9.56054L24.6008 11.9688L23.2652 13.9777L13.3052 28.9115H39.1067L30.4992 16.023L23.8424 26.3661H18.1588L26.838 13.3525L28.5359 10.8111L32.1129 5.44588L33.5748 3.25946L33.4653 3.19088C30.2886 1.27474 26.6147 0.181529 22.8397 0.0201699C22.511 0.00806796 22.1782 0 21.8538 0C18.8161 0 15.8837 0.580893 13.1367 1.72251C11.9612 2.21466 10.8194 2.80765 9.7493 3.49343C8.55276 4.25988 7.42784 5.14333 6.40403 6.12762C4.73983 7.72104 3.36633 9.5323 2.32146 11.5211C0.779438 14.4457 0 17.6083 0 20.9243C0 23.7561 0.577206 26.4992 1.71476 29.0729L1.81167 29.2907L3.60227 26.6041L3.5812 26.5476C2.97029 24.7323 2.66273 22.8404 2.66273 20.9243C2.66273 16.7047 4.20054 12.578 6.99388 9.31043C8.1525 7.95098 9.50915 6.75692 11.0217 5.76456C12.1045 5.05055 13.2673 4.44545 14.4807 3.96137C16.482 3.15861 18.6054 2.69067 20.7878 2.57771C22.2203 2.50107 23.6739 2.57771 25.0811 2.80765C26.1639 2.98515 27.2424 3.25542 28.2915 3.61041C28.7929 3.77984 29.2858 3.97347 29.7577 4.17517L29.7998 4.19534L26.5599 9.05629L26.2186 9.56457L26.206 9.56054Z" fill="white"/>
         <path d="M43.7074 20.9244C43.7074 22.5017 43.5262 24.0709 43.1639 25.5917C43.1218 25.7813 43.067 25.9911 43.0038 26.217C42.6415 27.5482 42.1443 28.8431 41.5166 30.0735C40.4548 32.159 39.035 34.0591 37.3034 35.7211C36.6335 36.3625 35.9215 36.9635 35.1842 37.5081C33.4989 38.7546 31.6451 39.751 29.6733 40.4731C27.1875 41.3848 24.5543 41.8487 21.8494 41.8487C20.7835 41.8487 19.7049 41.7761 18.6516 41.6268C13.9919 40.9773 9.75339 38.9361 6.39549 35.717C5.06412 34.4423 3.90971 33.0142 2.96596 31.4773L2.92383 31.4128L4.53748 28.9883L21.8536 3.03369L26.2059 9.56471L24.6006 11.973L21.8536 7.76555L6.10899 31.3845L6.09635 31.4047L6.10899 31.4249C9.70705 36.3584 15.5929 39.3032 21.8536 39.3032C23.0586 39.3032 24.2636 39.1943 25.4306 38.9805C26.4544 38.7949 27.4782 38.5247 28.4641 38.1777C30.3896 37.5 32.1802 36.5319 33.7896 35.3055C34.944 34.4261 35.9973 33.4136 36.9158 32.3043C37.7753 31.2595 38.5168 30.138 39.115 28.9641L39.1277 28.9399L39.1572 28.8794C39.5954 28.0081 39.9661 27.0924 40.2568 26.1484C40.6107 25.0028 40.8509 23.8248 40.9646 22.6388C41.0194 22.0741 41.0489 21.4972 41.0489 20.9204C41.0489 15.3817 38.4662 10.19 33.9623 6.67234L33.8739 6.60377L35.319 4.43752L35.4285 4.52223C36.0731 5.01438 36.7051 5.55493 37.3034 6.12372C41.4323 10.077 43.7032 15.3293 43.7032 20.9204L43.7074 20.9244Z" fill="white"/>
       </svg>
@@ -397,7 +400,7 @@
       <!-- App screenshot -->
       <div class="flex-1 flex justify-end">
         <div id="collections-img-wrap" class="rounded-2xl overflow-hidden" style="max-width: 807px; width: 100%; cursor: pointer; transition: transform 0.6s cubic-bezier(0.23,1,0.32,1), box-shadow 0.6s cubic-bezier(0.23,1,0.32,1);">
-          <img src="Assets/image-collections.png" alt="Alphagraphs Collections dashboard" style="width:100%;height:auto;display:block;" />
+          <img src="Assets/image-collections.png" alt="Alphgraphs Collections dashboard" style="width:100%;height:auto;display:block;" />
         </div>
       </div>
     </div>
@@ -418,7 +421,7 @@
       <!-- App screenshot -->
       <div class="flex-1">
         <div id="profiles-img-wrap" class="rounded-2xl overflow-hidden" style="cursor: pointer; transition: transform 0.6s cubic-bezier(0.23,1,0.32,1);">
-          <img src="Assets/image-profiles.png" alt="Alphagraphs Profiles dashboard" style="width:100%;height:auto;display:block;" />
+          <img src="Assets/image-profiles.png" alt="Alphgraphs Profiles dashboard" style="width:100%;height:auto;display:block;" />
         </div>
       </div>
 
@@ -467,7 +470,7 @@
       <!-- App screenshot -->
       <div class="flex-1 flex justify-end">
         <div id="mints-img-wrap" class="rounded-2xl overflow-hidden" style="max-width: 700px; width: 100%; cursor: pointer; transition: transform 0.6s cubic-bezier(0.23,1,0.32,1);">
-          <img src="Assets/image-mints.png" alt="Alphagraphs Mints dashboard" style="width:100%;height:auto;display:block;" />
+          <img src="Assets/image-mints.png" alt="Alphgraphs Mints dashboard" style="width:100%;height:auto;display:block;" />
         </div>
       </div>
     </div>
@@ -488,7 +491,7 @@
       <!-- App screenshot -->
       <div class="flex-1">
         <div id="portfolio-img-wrap" class="rounded-2xl overflow-hidden" style="cursor: pointer; transition: transform 0.6s cubic-bezier(0.23,1,0.32,1);">
-          <img src="Assets/image-portfolios.png" alt="Alphagraphs Portfolio dashboard" style="width:100%;height:auto;display:block;" />
+          <img src="Assets/image-portfolios.png" alt="Alphgraphs Portfolio dashboard" style="width:100%;height:auto;display:block;" />
         </div>
       </div>
 
@@ -527,7 +530,7 @@
 <!-- ============================================================
      PARTNERS SECTION
      ============================================================ -->
-<section class="bg-black py-24">
+<section class="bg-black py-12">
   <div class="max-w-7xl mx-auto px-12">
     <div class="flex flex-col items-center gap-16">
       <h2 class="font-montserrat font-bold text-white uppercase text-center" style="font-size: clamp(24px, 2.5vw, 40px);">
@@ -547,14 +550,10 @@
           <svg height="32" viewBox="0 0 100 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Ethereum">
             <text x="0" y="26" font-family="Arial,sans-serif" font-weight="700" font-size="26" fill="white">Ethereum</text>
           </svg>
-          <!-- OpenSea wordmark -->
-          <svg height="32" viewBox="0 0 110 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="OpenSea">
-            <text x="0" y="26" font-family="Arial,sans-serif" font-weight="700" font-size="26" fill="white">OpenSea</text>
-          </svg>
-          <!-- Solana wordmark -->
-          <svg height="32" viewBox="0 0 110 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Solana">
-            <text x="0" y="26" font-family="Arial,sans-serif" font-weight="700" font-size="26" fill="white">Solana</text>
-          </svg>
+          <!-- Cocobay -->
+          <img src="Assets/cocobay-logo.png" alt="Cocobay" style="height:32px;width:auto;filter:brightness(0) invert(1);" />
+          <!-- Poligon -->
+          <img src="Assets/poligon-Logo.svg" alt="Poligon" style="height:32px;width:auto;filter:brightness(0) invert(1);" />
           <!-- MetaMask -->
           <svg height="32" viewBox="0 0 130 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="MetaMask">
             <text x="0" y="26" font-family="Arial,sans-serif" font-weight="700" font-size="26" fill="white">MetaMask</text>
@@ -569,12 +568,8 @@
           <svg height="32" viewBox="0 0 100 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Ethereum">
             <text x="0" y="26" font-family="Arial,sans-serif" font-weight="700" font-size="26" fill="white">Ethereum</text>
           </svg>
-          <svg height="32" viewBox="0 0 110 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="OpenSea">
-            <text x="0" y="26" font-family="Arial,sans-serif" font-weight="700" font-size="26" fill="white">OpenSea</text>
-          </svg>
-          <svg height="32" viewBox="0 0 110 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Solana">
-            <text x="0" y="26" font-family="Arial,sans-serif" font-weight="700" font-size="26" fill="white">Solana</text>
-          </svg>
+          <img src="Assets/cocobay-logo.png" alt="Cocobay" style="height:32px;width:auto;filter:brightness(0) invert(1);" />
+          <img src="Assets/poligon-Logo.svg" alt="Poligon" style="height:32px;width:auto;filter:brightness(0) invert(1);" />
           <svg height="32" viewBox="0 0 130 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="MetaMask">
             <text x="0" y="26" font-family="Arial,sans-serif" font-weight="700" font-size="26" fill="white">MetaMask</text>
           </svg>
@@ -588,10 +583,19 @@
 </section>
 
 
+<!-- FLOATING E-IMAGE COIN (left side, between Partners & Testimonials) -->
+<div id="floating-ecoin-wrap" style="position: relative; height: 120px; background: #010101; overflow: visible; z-index: 6;">
+  <img id="floating-ecoin" src="Assets/e_image.png" alt="Coin"
+    style="position: absolute; left: 6%; top: 20px;
+           width: 300px; height: 300px; object-fit: contain;
+           filter: drop-shadow(0 0 50px rgba(80,180,255,0.45));
+           will-change: transform;" />
+</div>
+
 <!-- ============================================================
      TESTIMONIALS SECTION
      ============================================================ -->
-<section class="bg-[#010101] py-24 overflow-hidden">
+<section class="bg-[#010101] pt-8 pb-24 overflow-hidden">
   <div class="max-w-5xl mx-auto px-12">
     <div class="flex flex-col items-center gap-16">
       <h2 class="font-montserrat font-bold text-white uppercase text-center" style="font-size: clamp(24px, 2.5vw, 40px); max-width: 662px; line-height: 1.2;">
@@ -605,43 +609,38 @@
           <!-- Card 1 -->
           <article class="testimonial-card p-6 border border-white/10">
             <p class="font-montserrat font-semibold text-[#E0E0E0] text-sm leading-relaxed tracking-wide mb-6">
-              "@alphagraphs is an absolute game changer. I spotted a blue-chip collection 3 hours before it blew up. The floor price tracker is insane 🔥 <span class="mention">@alphagraphs</span> never misses."
+              "@alphgraphs is an absolute game changer. I spotted a blue-chip collection 3 hours before it blew up. The floor price tracker is insane 🔥 <span class="mention">@alphgraphs</span> never misses."
             </p>
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-3">
-                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center overflow-hidden">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <div class="w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                  <img src="Assets/testimonial-1.png" alt="CryptoKing" style="width:100%;height:100%;object-fit:cover;" />
                 </div>
                 <div>
                   <div class="font-opensans font-semibold text-white text-base">CryptoKing</div>
                   <div class="font-opensans font-semibold text-white/40 text-sm">@cryptoking_eth</div>
                 </div>
               </div>
-              <!-- Twitter/X icon -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#1DA1F2" aria-label="Twitter">
-                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
-              </svg>
+              <img src="Assets/twitter.png" alt="Twitter" style="width:28px;height:28px;object-fit:contain;" />
             </div>
           </article>
 
           <!-- Card 2 -->
           <article class="testimonial-card p-6 border border-white/10">
             <p class="font-montserrat font-semibold text-[#E0E0E0] text-sm leading-relaxed tracking-wide mb-6">
-              "Finally a tool that shows me real mint data before it's too late. Used <span class="mention">@alphagraphs</span> to analyze 3 mints last week — 2 were rugs, 1 was a 10x. Worth every penny."
+              "Finally a tool that shows me real mint data before it's too late. Used <span class="mention">@alphgraphs</span> to analyze 3 mints last week — 2 were rugs, 1 was a 10x. Worth every penny."
             </p>
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-3">
-                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <div class="w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                  <img src="Assets/testimonial-2.png" alt="NFTHunter" style="width:100%;height:100%;object-fit:cover;" />
                 </div>
                 <div>
                   <div class="font-opensans font-semibold text-white text-base">NFTHunter</div>
                   <div class="font-opensans font-semibold text-white/40 text-sm">@nfthunter_sol</div>
                 </div>
               </div>
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#1DA1F2" aria-label="Twitter">
-                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
-              </svg>
+              <img src="Assets/twitter.png" alt="Twitter" style="width:28px;height:28px;object-fit:contain;" />
             </div>
           </article>
         </div>
@@ -651,42 +650,38 @@
           <!-- Card 3 -->
           <article class="testimonial-card p-6 border border-white/10">
             <p class="font-montserrat font-semibold text-[#E0E0E0] text-sm leading-relaxed tracking-wide mb-6">
-              "The wallet tracking feature alone is worth it. I follow 20+ alpha wallets and get alerts the moment they buy. <span class="mention">@alphagraphs</span> is my secret weapon 💎"
+              "The wallet tracking feature alone is worth it. I follow 20+ alpha wallets and get alerts the moment they buy. <span class="mention">@alphgraphs</span> is my secret weapon 💎"
             </p>
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-3">
-                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <div class="w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                  <img src="Assets/testimonial-3.png" alt="WhaleWatcher" style="width:100%;height:100%;object-fit:cover;" />
                 </div>
                 <div>
                   <div class="font-opensans font-semibold text-white text-base">WhaleWatcher</div>
                   <div class="font-opensans font-semibold text-white/40 text-sm">@whalewatcher_nft</div>
                 </div>
               </div>
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#1DA1F2" aria-label="Twitter">
-                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
-              </svg>
+              <img src="Assets/twitter.png" alt="Twitter" style="width:28px;height:28px;object-fit:contain;" />
             </div>
           </article>
 
           <!-- Card 4 -->
           <article class="testimonial-card p-6 border border-white/10">
             <p class="font-montserrat font-semibold text-[#E0E0E0] text-sm leading-relaxed tracking-wide mb-6">
-              "Switched from 4 different tools to just <span class="mention">@alphagraphs</span>. Collections, profiles, mints, portfolio — it's all here. The UI is beautiful and the data is lightning fast."
+              "Switched from 4 different tools to just <span class="mention">@alphgraphs</span>. Collections, profiles, mints, portfolio — it's all here. The UI is beautiful and the data is lightning fast."
             </p>
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-3">
-                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-green-500 to-teal-400 flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <div class="w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                  <img src="Assets/testimonial-4.png" alt="ApeAlpha" style="width:100%;height:100%;object-fit:cover;" />
                 </div>
                 <div>
                   <div class="font-opensans font-semibold text-white text-base">ApeAlpha</div>
                   <div class="font-opensans font-semibold text-white/40 text-sm">@apealpha_xyz</div>
                 </div>
               </div>
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#1DA1F2" aria-label="Twitter">
-                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
-              </svg>
+              <img src="Assets/twitter.png" alt="Twitter" style="width:28px;height:28px;object-fit:contain;" />
             </div>
           </article>
         </div>
@@ -700,8 +695,11 @@
      PRICING SECTION
      ============================================================ -->
 <section id="pricing" class="relative bg-black py-24 overflow-hidden">
-  <!-- Glow orb behind price -->
-  <div class="glow-orb" style="top: 50%; left: 50%; transform: translate(-50%, -50%); width: 700px; height: 700px;"></div>
+  <!-- Lines asset — parallax via JS -->
+  <img id="pricing-lines" src="Assets/lines _asset.svg" alt="" aria-hidden="true"
+    style="position:absolute; left:50%; top:50%; width:100%; height:130%; object-fit:cover; transform:translate(-50%,-50%); opacity:0.5; pointer-events:none; z-index:0; will-change:transform;" />
+  <!-- Radial neon glow — parallax via JS -->
+  <div id="pricing-glow" style="position:absolute; left:50%; top:60%; width:2106px; height:1170px; border-radius:50%; transform:translate(-50%,-50%); background:radial-gradient(ellipse at center, rgba(0,204,203,0.18) 0%, rgba(0,204,203,0.06) 45%, transparent 70%); pointer-events:none; z-index:1; will-change:transform;"></div>
 
   <div class="max-w-5xl mx-auto px-12 relative z-10">
     <div class="flex flex-col items-center gap-12">
@@ -710,20 +708,13 @@
       </h2>
 
       <!-- Switcher -->
-      <div class="bg-[#00CCCB] rounded-xl p-1.5 flex gap-1" role="tablist" aria-label="Billing period">
-        <button id="tab-monthly" role="tab" aria-selected="true" class="switcher-option active font-montserrat font-bold px-8 py-2 rounded-lg text-white cursor-pointer transition-all duration-200" onclick="switchPricing('monthly')" style="font-size: clamp(16px, 1.5vw, 28px);">
+      <div class="bg-[#00CCCB] rounded-lg p-1 flex gap-1" role="tablist" aria-label="Billing period">
+        <button id="tab-monthly" role="tab" aria-selected="true" class="switcher-option active font-montserrat font-bold px-5 py-1.5 rounded-md cursor-pointer transition-all duration-200" onclick="switchPricing('monthly')" style="font-size: clamp(12px, 1vw, 18px);">
           Monthly
         </button>
-        <button id="tab-yearly" role="tab" aria-selected="false" class="switcher-option font-montserrat font-bold px-8 py-2 rounded-lg text-black cursor-pointer transition-all duration-200" onclick="switchPricing('yearly')" style="font-size: clamp(16px, 1.5vw, 28px);">
+        <button id="tab-yearly" role="tab" aria-selected="false" class="switcher-option font-montserrat font-bold px-5 py-1.5 rounded-md cursor-pointer transition-all duration-200" onclick="switchPricing('yearly')" style="font-size: clamp(12px, 1vw, 18px);">
           Yearly
         </button>
-      </div>
-
-      <!-- Price display -->
-      <div class="text-center">
-        <div class="font-montserrat font-black text-[#00CCCB] neon-text leading-none" style="font-size: clamp(60px, 8vw, 110px);">FREE</div>
-        <div class="font-montserrat font-black text-[#00CCCB] neon-text leading-none" style="font-size: clamp(40px, 5vw, 73px);">to use</div>
-        <p class="text-white/60 font-medium mt-4" style="font-size: clamp(14px, 1vw, 18px);">No credit card required · Upgrade anytime</p>
       </div>
 
       <!-- Pricing cards -->
@@ -761,7 +752,7 @@
 
         <!-- Pro (featured) -->
         <div class="bg-[#17171A] rounded-2xl p-8 border border-[#00CCCB] flex flex-col gap-6 relative" style="box-shadow: 0 0 30px rgba(0,204,203,0.2);">
-          <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#00CCCB] text-black text-xs font-black px-4 py-1 rounded-full uppercase tracking-widest">Most Popular</div>
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#00CCCB] text-black text-xs font-black px-4 py-1 rounded-full uppercase tracking-widest whitespace-nowrap">Most Popular</div>
           <div>
             <div class="text-[#00CCCB] text-sm font-semibold uppercase tracking-widest mb-2">Pro</div>
             <div class="text-white font-black text-4xl" id="pro-price">$29<span class="text-white/40 text-lg font-medium">/mo</span></div>
@@ -841,14 +832,14 @@
         <!-- Q1 (open by default) -->
         <div class="faq-item open bg-[#17171A] border border-[#00CCCB] rounded-2xl overflow-hidden cursor-pointer" style="box-shadow: 6px 4px 1px 0px #00CCCB;" onclick="toggleFAQ(this)" role="listitem" aria-expanded="true">
           <div class="flex items-center justify-between px-8 py-6">
-            <h3 class="font-montserrat font-medium text-white" style="font-size: clamp(16px, 1.8vw, 32px);">What blockchains does Alphagraphs support?</h3>
+            <h3 class="font-montserrat font-medium text-white" style="font-size: 20px;">What blockchains does Alphgraphs support?</h3>
             <span class="faq-caret text-[#00CCCB] text-2xl flex-shrink-0 ml-4" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
             </span>
           </div>
           <div class="faq-answer">
-            <p class="text-[#898989] font-montserrat font-medium px-8 pb-8" style="font-size: clamp(14px, 1vw, 20px); line-height: 1.6;">
-              Alphagraphs currently supports Ethereum, Solana, Polygon, BNB Chain, and Avalanche. We are actively working on adding support for additional chains including Base, Optimism, and Arbitrum. New chains are added based on community demand and ecosystem growth.
+            <p class="text-[#898989] font-montserrat font-medium px-8 pb-8" style="font-size: 16px; line-height: 1.6;">
+              Alphgraphs currently supports Ethereum, Solana, Polygon, BNB Chain, and Avalanche. We are actively working on adding support for additional chains including Base, Optimism, and Arbitrum. New chains are added based on community demand and ecosystem growth.
             </p>
           </div>
         </div>
@@ -856,14 +847,14 @@
         <!-- Q2 -->
         <div class="faq-item bg-[#17171A] border border-[#00CCCB] rounded-2xl overflow-hidden cursor-pointer" style="box-shadow: 6px 4px 1px 0px #00CCCB;" onclick="toggleFAQ(this)" role="listitem" aria-expanded="false">
           <div class="flex items-center justify-between px-8 py-6">
-            <h3 class="font-montserrat font-medium text-white" style="font-size: clamp(16px, 1.8vw, 32px);">Is my wallet data secure?</h3>
+            <h3 class="font-montserrat font-medium text-white" style="font-size: 20px;">Is my wallet data secure?</h3>
             <span class="faq-caret text-[#00CCCB] text-2xl flex-shrink-0 ml-4" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
             </span>
           </div>
           <div class="faq-answer">
-            <p class="text-[#898989] font-montserrat font-medium px-8 pb-8" style="font-size: clamp(14px, 1vw, 20px); line-height: 1.6;">
-              Absolutely. Alphagraphs is a read-only analytics platform. We never ask for private keys or seed phrases. All data is sourced from public blockchain data. You can track any wallet simply by entering its public address — no wallet connection required.
+            <p class="text-[#898989] font-montserrat font-medium px-8 pb-8" style="font-size: 16px; line-height: 1.6;">
+              Absolutely. Alphgraphs is a read-only analytics platform. We never ask for private keys or seed phrases. All data is sourced from public blockchain data. You can track any wallet simply by entering its public address — no wallet connection required.
             </p>
           </div>
         </div>
@@ -871,13 +862,13 @@
         <!-- Q3 -->
         <div class="faq-item bg-[#17171A] border border-[#00CCCB] rounded-2xl overflow-hidden cursor-pointer" style="box-shadow: 6px 4px 1px 0px #00CCCB;" onclick="toggleFAQ(this)" role="listitem" aria-expanded="false">
           <div class="flex items-center justify-between px-8 py-6">
-            <h3 class="font-montserrat font-medium text-white" style="font-size: clamp(16px, 1.8vw, 32px);">How real-time is the data?</h3>
+            <h3 class="font-montserrat font-medium text-white" style="font-size: 20px;">How real-time is the data?</h3>
             <span class="faq-caret text-[#00CCCB] text-2xl flex-shrink-0 ml-4" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
             </span>
           </div>
           <div class="faq-answer">
-            <p class="text-[#898989] font-montserrat font-medium px-8 pb-8" style="font-size: clamp(14px, 1vw, 20px); line-height: 1.6;">
+            <p class="text-[#898989] font-montserrat font-medium px-8 pb-8" style="font-size: 16px; line-height: 1.6;">
               Pro and Enterprise plans receive real-time data with sub-second updates on price changes, sales, and wallet activity. The Free plan receives data with a 5-minute delay. Our infrastructure processes millions of on-chain events per day to keep you ahead of the market.
             </p>
           </div>
@@ -886,13 +877,13 @@
         <!-- Q4 -->
         <div class="faq-item bg-[#17171A] border border-[#00CCCB] rounded-2xl overflow-hidden cursor-pointer" style="box-shadow: 6px 4px 1px 0px #00CCCB;" onclick="toggleFAQ(this)" role="listitem" aria-expanded="false">
           <div class="flex items-center justify-between px-8 py-6">
-            <h3 class="font-montserrat font-medium text-white" style="font-size: clamp(16px, 1.8vw, 32px);">Can I cancel my subscription anytime?</h3>
+            <h3 class="font-montserrat font-medium text-white" style="font-size: 20px;">Can I cancel my subscription anytime?</h3>
             <span class="faq-caret text-[#00CCCB] text-2xl flex-shrink-0 ml-4" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
             </span>
           </div>
           <div class="faq-answer">
-            <p class="text-[#898989] font-montserrat font-medium px-8 pb-8" style="font-size: clamp(14px, 1vw, 20px); line-height: 1.6;">
+            <p class="text-[#898989] font-montserrat font-medium px-8 pb-8" style="font-size: 16px; line-height: 1.6;">
               Yes, you can cancel your subscription at any time from your account settings. There are no cancellation fees or long-term commitments. Your plan stays active until the end of the current billing period, then automatically reverts to the Free tier.
             </p>
           </div>
@@ -906,9 +897,12 @@
 <!-- ============================================================
      NEWSLETTER SECTION
      ============================================================ -->
-<section class="relative bg-black py-24 overflow-hidden">
+<section class="relative bg-black py-24">
   <!-- Glow orb -->
   <div class="glow-orb" style="top: 50%; left: 50%; transform: translate(-50%, -50%); width: 760px; height: 400px; border-radius: 50%;"></div>
+  <!-- Shining asset behind input -->
+  <img src="Assets/shining.svg" alt="" aria-hidden="true"
+    style="position:absolute; left:50%; top:55%; transform:translate(-50%,-50%); width:1100px; pointer-events:none; z-index:1; opacity:0.9;" />
 
   <div class="max-w-3xl mx-auto px-12 relative z-10">
     <div class="flex flex-col items-center gap-10">
@@ -939,11 +933,20 @@
         </button>
       </form>
       <p id="subscribe-msg" class="text-[#84F4B8] text-sm font-montserrat hidden">
-        You're subscribed! Welcome to the Alphagraphs community.
+        You're subscribed! Welcome to the Alphgraphs community.
       </p>
     </div>
   </div>
 </section>
+
+<!-- FLOATING B-IMAGE -->
+<div id="floating-bcoin-wrap" style="position:relative; height:160px; background:#000; overflow:visible; z-index:6;">
+  <img id="floating-bcoin" src="Assets/b_image.png" alt=""
+    style="position:absolute; right:6%; top:-80px;
+           width:260px; height:260px; object-fit:contain;
+           filter:drop-shadow(0 0 40px rgba(255,180,50,0.45));
+           will-change:transform;" />
+</div>
 
 
 <!-- ============================================================
@@ -984,7 +987,7 @@
       <!-- Logo + description -->
       <div class="flex flex-col gap-6 max-w-xs">
         <div class="flex items-center gap-2">
-          <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Alphagraphs logo">
+          <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Alphgraphs logo">
             <circle cx="20" cy="20" r="18" stroke="#00CCCB" stroke-width="3"/>
             <path d="M10 28 L20 10 L30 28" stroke="#00CCCB" stroke-width="3" stroke-linejoin="round"/>
             <path d="M14 22 H26" stroke="#00CCCB" stroke-width="2"/>
@@ -1025,7 +1028,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
           </svg>
-          @alphagraphs
+          @alphgraphs
         </a>
         <a href="#" class="flex items-center gap-2 text-white/70 hover:text-[#00CCCB] transition-colors text-sm font-montserrat cursor-pointer">
           <!-- Discord icon -->
@@ -1045,7 +1048,7 @@
 
     <!-- Copyright -->
     <div class="flex items-center justify-between text-white/40 text-sm font-montserrat flex-wrap gap-4">
-      <span>© Alphagraphs – 2023. All rights reserved.</span>
+      <span>© Alphgraphs – 2023. All rights reserved.</span>
       <div class="flex gap-6">
         <a href="#" class="hover:text-white/60 transition-colors cursor-pointer">Terms of Service</a>
         <a href="#" class="hover:text-white/60 transition-colors cursor-pointer">Privacy Policy</a>
@@ -1252,8 +1255,48 @@
     window.addEventListener('scroll', updateCoin, { passive: true });
     updateCoin();
 
+    /* ── Floating e-coin: parallax viewport-relativo ── */
+    const ecoin = document.getElementById('floating-ecoin');
+    const ecoinWrap = document.getElementById('floating-ecoin-wrap');
+    function updateEcoin() {
+      const rect = ecoinWrap.getBoundingClientRect();
+      const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+      const clamped = Math.max(0, Math.min(1, progress));
+      ecoin.style.transform = `translateY(${clamped * -160}px)`;
+    }
+    window.addEventListener('scroll', updateEcoin, { passive: true });
+    updateEcoin();
+
     window.addEventListener('scroll', updateNavTheme, { passive: true });
     updateNavTheme();
+
+    /* ── Pricing glow + lines: parallax ── */
+    const pricingGlow = document.getElementById('pricing-glow');
+    const pricingLines = document.getElementById('pricing-lines');
+    const pricingSection = document.getElementById('pricing');
+    function updatePricingGlow() {
+      const rect = pricingSection.getBoundingClientRect();
+      const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+      const clamped = Math.max(0, Math.min(1, progress));
+      const y = (clamped - 0.5) * -200;
+      pricingGlow.style.transform = `translate(-50%, calc(-50% + ${y}px))`;
+      const linesY = (clamped - 0.5) * -80;
+      pricingLines.style.transform = `translate(-50%, calc(-50% + ${linesY}px))`;
+    }
+    window.addEventListener('scroll', updatePricingGlow, { passive: true });
+    updatePricingGlow();
+
+    /* ── Floating b-coin: parallax ── */
+    const bcoin = document.getElementById('floating-bcoin');
+    const bcoinWrap = document.getElementById('floating-bcoin-wrap');
+    function updateBcoin() {
+      const rect = bcoinWrap.getBoundingClientRect();
+      const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+      const clamped = Math.max(0, Math.min(1, progress));
+      bcoin.style.transform = `translateY(${clamped * -160}px)`;
+    }
+    window.addEventListener('scroll', updateBcoin, { passive: true });
+    updateBcoin();
   }
 </script>
 </body>
